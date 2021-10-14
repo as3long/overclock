@@ -1,0 +1,40 @@
+{
+   "background": {
+      "persistent": false,
+      "scripts": [ "build/background.js" ]
+   },
+   "browser_action": {
+      "default_icon": {
+         "128": "icons/128-gray.png",
+         "16": "icons/16-gray.png",
+         "48": "icons/48-gray.png"
+      },
+      "default_popup": "popups/not-found.html",
+      "default_title": "Vue Devtools"
+   },
+   "content_scripts": [ {
+      "js": [ "build/hook.js" ],
+      "matches": [ "\u003Call_urls>" ],
+      "run_at": "document_start"
+   }, {
+      "js": [ "build/detector.js" ],
+      "matches": [ "\u003Call_urls>" ],
+      "run_at": "document_idle"
+   } ],
+   "content_security_policy": "script-src 'self' https://cdn.headwayapp.co; object-src 'self'",
+   "description": "DevTools extension for debugging Vue.js applications.",
+   "devtools_page": "devtools-background.html",
+   "icons": {
+      "128": "icons/128-beta.png",
+      "16": "icons/16-beta.png",
+      "48": "icons/48-beta.png"
+   },
+   "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAuFP4uJK2oBXsK5p4EZ3Q2HHy7NrcOoLEmLALUez7r+ejiLYtq1uRP8i9pPFyGx2HfywjUGqTzGwy1aBJbN8Upy3DLz1Qh+CzNkVMRJaAjNfbd5pKmStlui4FpxoZbtiaawiLpaM9R1OmzedeSbLdjvb8I9BXyKS/vcQMjy6aiwvu+b70qdcMVD51GpCoZmHdejskpvZyTNmFrYZRWWwAt5DiZbjH57x6lVJnx2J22JNbQ9hNRYLemjM85F3CsW3OMsrrGd1YPUSGtcjqzdDdR3to8FvrIsmREr9Qu/NIM0N4e+k4jkMSHu+cjIkgqULnmj2AhhzSnv3cy349o/L6TQIDAQAB",
+   "manifest_version": 2,
+   "name": "Vue.js devtools beta ax",
+   "permissions": [ "\u003Call_urls>", "contextMenus", "storage" ],
+   "update_url": "https://edge.microsoft.com/extensionwebstorebase/v1/crx",
+   "version": "6.0.0.19",
+   "version_name": "6.0.0 beta 19",
+   "web_accessible_resources": [ "devtools.html", "devtools-background.html", "build/backend.js" ]
+}

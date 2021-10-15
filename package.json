@@ -1,11 +1,11 @@
 {
   "name": "overclock",
-  "version": "0.0.4",
+  "version": "0.1.1",
   "author": {
     "name": "as3long@qq.com"
   },
   "license": "UNLICENSED",
-  "description": "超频小助手",
+  "description": "overclock",
   "main": "./dist/main/index.js",
   "scripts": {
     "dev": "concurrently -n=R,P,M -c=green,yellow,blue \"npm run dev:render\" \"npm run dev:preload\" \"npm run dev:main\"",
@@ -16,23 +16,29 @@
     "build:render": "vite build",
     "build:preload": "node -r ts-node/register script/build-preload --env=production",
     "build:main": "node -r ts-node/register script/build-main --env=production",
-    "build": "rimraf dist && npm run build:render && npm run build:preload && npm run build:main && electron-builder"
+    "build": "npm version patch --no-git-tag-version && rimraf dist && npm run build:render && npm run build:preload && npm run build:main && electron-builder"
   },
   "build": {
-    "productName": "超频小助手",
+    "productName": "overclock",
     "appId": "com.as3long.overclock",
     "asar": true,
     "directories": {
       "output": "build/${version}"
     },
     "files": [
+      "!node_modules",
       "dist/**"
     ],
     "win": {
       "icon": "build/icons/icon.ico",
       "requestedExecutionLevel": "requireAdministrator",
       "target": [
-        "portable"
+        {
+          "target": "portable",
+          "arch": [
+            "ia32"
+          ]
+        }
       ],
       "extraResources": {
         "from": "./extra/",

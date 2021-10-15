@@ -11,6 +11,12 @@
       label-placement="left"
       :label-width="100"
     >
+      <n-input-group>
+        <n-form-item class="one-card" label="单卡超频" path="oneCard">
+          <n-switch v-model:value="overclock.oneCard" />
+        </n-form-item>
+        <n-select v-if="overclock.oneCard" :style="{ width: '50%' }" v-model:value="overclock.pusid" :options="options" />
+      </n-input-group>
       <n-form-item-row label="功耗限制" path="power">
         <n-input-group>
           <n-input
@@ -55,13 +61,6 @@
           <n-input-group-label>默认-1，-1：表示自动转速，大于0风扇将使用固定转速</n-input-group-label>
         </n-input-group>
       </n-form-item-row>
-      <n-input-group>
-        <n-form-item class="one-card" label="单卡超频" path="oneCard">
-          <n-switch v-model:value="overclock.oneCard" />
-        </n-form-item>
-
-        <n-select v-if="overclock.oneCard" :style="{ width: '50%' }" v-model:value="overclock.pusid" :options="options" />
-      </n-input-group>
       <n-button @click="reset">重置参数</n-button>
       <n-button type="warning" @click="save">保存设置</n-button>
     </n-form>

@@ -73,12 +73,12 @@ export default class OverClock {
       args.push('-core')
       args.push(pusid)
       args.push('0')
-      args.push(core)
+      args.push((core * 1000).toString())
 
       args.push('-mem')
       args.push(pusid)
       args.push('0')
-      args.push(mem)
+      args.push((mem * 1000).toString())
 
       args.push('-fan')
       args.push(pusid)
@@ -111,9 +111,9 @@ export default class OverClock {
       });
     }
     // 检测必须用nbminer
-
-    const {stdout, stderr} = await execa(binPath, args);
-    logger.log('超频', stdout, stderr)
+    logger.log('overclock args', args.join(' '))
+    const {stdout, stderr} = await execa(binPath, args)
+    logger.log('overclock', stdout, stderr)
   }
 
   getBinPath () {

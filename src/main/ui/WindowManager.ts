@@ -81,7 +81,7 @@ export default class WindowManager extends EventEmitter {
     const { hidden } = options
     const autoHideWindow = this.userConfig['auto-hide-window']
     // @ts-ignore
-    let window = this.windows[page] || null
+    let window:BrowserWindow = this.windows[page] || null
     if (window) {
       window.show()
       window.focus()
@@ -104,6 +104,9 @@ export default class WindowManager extends EventEmitter {
         preload,
       }
     })
+
+    // 打开开发者工具
+    // window.webContents.openDevTools()
 
     enable(window.webContents);
 

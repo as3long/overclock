@@ -1,4 +1,4 @@
-const i18next = require('i18next');
+import i18next from 'i18next'
 import { getLanguage } from './index';
 
 export default class LocaleManager {

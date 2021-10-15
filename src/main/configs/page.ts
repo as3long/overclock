@@ -4,9 +4,9 @@ export default {
   index: {
     attrs: {
       title: 'OverClock',
-      width: 700,
+      width: 750,
       height: 600,
-      minWidth: 700,
+      minWidth: 750,
       minHeight: 600,
       // backgroundColor: '#FFFFFF',
       transparent: !is.windows()
